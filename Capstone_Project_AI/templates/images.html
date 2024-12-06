@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NyxChat</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='css/styles.css')}}" />
+    <link rel= "SHORTCUT ICON" href= "{{url_for('static', filename='images/Nyx.png')}}" >
+  </head>
+  <body>
+    <div class="main-container">
+      <div class="sidebar">
+        <a href="/"> <img style="height: 70px;width: 200px; "src="{{url_for('static', filename='images/logo.png')}}" alt="Thinknyx Logo"><br><br> </a>
+        
+        <div style="">
+          <h2 class="h2">More Options</h2>
+          <a href = "/" ><button class="sidebar-button">Text</button></a>
+          <a href = "/images" ><button class="sidebar-button-main">Images</button></a>
+        </div>
+        <div style="margin-top:auto; text-align:center;" > 
+            <hr>
+            <a href="https://www.udemy.com/user/yogesh-raheja/" target="_blank" style="color:white; margin-bottom:4px; font-weight:4; text-decoration:none;" >Thinknyx Udemy Courses</a>
+            <hr>
+            <a href="https://www.thinknyx.com/blog/" target="_blank" style="color:white; margin-bottom:4px; font-weight:4; text-decoration:none;">Blogs</a>
+            <hr>
+            <a href="https://tap.thinknyx.com/" target="_blank" style="color:white; margin-bottom:4px; font-weight:4; text-decoration:none;">Assessment Platform (TAP)</a>
+            <hr>
+            <a href="https://www.thinknyx.com/" target="_blank" style="color:white; margin-bottom:4px; font-weight:4; text-decoration:none;">About Us</a>
+            <hr>
+          
+        </div>
+        
+      </div>
+      <div class="chat-container">
+        <div class="chat-header">
+          <h1>How can I help you today?</h1>
+        </div>
+        <div class="chat-body" id="chat-body">
+          <!-- Chat messages will appear here -->
+          {% if prompt %}
+          <div style= "background-color: white; color: black; border-radius: 30px; border: 1px solid black"> 
+            <b><p style= "padding-right: 10px; text-align: right; font-family: monospace;">{{ prompt }}</p></b>
+          </div>
+          
+          {% endif %}
+
+          <br> 
+          {% if path %}
+            <img src = "{{path}}" height=400 width=400>
+          {% endif %}
+        </div>
+        <form method="POST" action="/images">
+          <div class="chat-footer">
+              <textarea
+                  id="chat-input"
+                  name="message"
+                  placeholder="Type a message..."
+                  rows="1"
+              ></textarea>
+              <button id="send-button" type="submit">Send</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div style="font-size:12px;">
+      <p>For issues, contact: <a href="mailto:support@thinknyx.com" style="text-decoration:none;">support@thinknyx.com</a></p>
+    </div>
+
+  </body>
+</html>
